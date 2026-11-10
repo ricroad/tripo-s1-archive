@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Poster 16:9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+SC:wght@500&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@600&display=block" rel="stylesheet">
+<style>
+  /* 1920 x 1080 (16:9). ?v=A (the climb: the hill on the right, open sky top-left) | ?v=B (the doorstep: the moon left, the flower right) */
+  :root { --moon: #cfe3e6; --sub: #a9b6c4; --tape: #c9b48a; --ink: #20242c; }
+  html, body { margin: 0; background: #070a14; }
+  .poster { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #070a14; }
+  .art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .shade-tl { position: absolute; left: 0; top: 0; width: 1250px; height: 620px; background: radial-gradient(ellipse at 0% 0%, rgba(7,10,20,.72), rgba(7,10,20,.3) 55%, rgba(7,10,20,0) 75%); }
+  .shade-bot { position: absolute; left: 0; right: 0; bottom: 0; height: 300px; background: linear-gradient(to top, rgba(7,10,20,.86), rgba(7,10,20,.45) 55%, rgba(7,10,20,0)); }
+  .head { position: absolute; left: 96px; color: var(--moon); }
+  .A .head { top: 92px; width: 900px; }
+  .B .head { top: 62px; width: 980px; }
+  .kicker { margin: 0 0 22px; font: 500 20px/1 "IBM Plex Mono", monospace; letter-spacing: .32em; color: var(--sub); }
+  h1 { margin: 0; font: 600 108px/0.95 "Cormorant Garamond", Georgia, serif; color: var(--moon); text-shadow: 0 2px 24px rgba(4,6,15,.7); white-space: nowrap; }
+  .B h1 { font-size: 96px; }
+  .zh { margin: 18px 0 0; font: 500 46px/1.2 "Noto Serif SC", "Songti SC", serif; letter-spacing: .26em; color: var(--moon); text-shadow: 0 2px 16px rgba(4,6,15,.7); }
+  .B .zh { font-size: 40px; margin-top: 14px; }
+  .line { margin: 26px 0 0; width: 640px; font: italic 500 30px/1.38 "Cormorant Garamond", Georgia, serif; color: var(--sub); text-shadow: 0 1px 12px rgba(4,6,15,.9); }
+  .B .head .line { display: none; }
+  .B .line.low { position: absolute; left: 96px; bottom: 148px; width: 620px; margin: 0; }
+  .A .line.low { display: none; }
+  .foot { position: absolute; left: 96px; right: 96px; bottom: 62px; display: flex; justify-content: space-between; align-items: flex-end; color: var(--sub); font: 400 18px/1.5 "IBM Plex Mono", monospace; letter-spacing: .06em; }
+  .foot b { display: block; font-weight: 500; color: var(--moon); letter-spacing: .08em; }
+  .foot .r { text-align: right; }
+  .tape { position: absolute; right: 120px; bottom: 150px; padding: 9px 24px 7px; background: var(--tape); color: var(--ink); font: 600 38px/1 "Caveat", cursive; transform: rotate(-3deg); box-shadow: 0 2px 8px rgba(0,0,0,.35); opacity: .93; }
+  .tape::before, .tape::after { content: ""; position: absolute; top: 0; bottom: 0; width: 7px; background: repeating-linear-gradient(to bottom, var(--tape) 0 6px, transparent 6px 10px); }
+  .tape::before { left: -6px; } .tape::after { right: -6px; }
+  .B .tape { transform: rotate(2.5deg); }
+</style>
+</head>
+<body>
+<div class="poster" id="poster">
+  <img class="art" id="art" alt="">
+  <div class="shade-tl"></div><div class="shade-bot"></div>
+  <div class="head">
+    <p class="kicker">A GIFT FOR YUE</p>
+    <h1>The 300-Year Bloom</h1>
+    <p class="zh">三百年的昙花</p>
+    <p class="line">He spent three hundred years turning a dead planet into a flowerpot, for the one seed she brought.</p>
+  </div>
+  <p class="line low">He spent three hundred years turning a dead planet into a flowerpot, for the one seed she brought.</p>
+  <div class="tape">Yue’s. Year 300.</div>
+  <div class="foot">
+    <div><b>A first-person walk, played in the browser</b>ricroad.github.io/the-300-year-bloom</div>
+    <div class="r"><b>Tripothon S1</b>2026</div>
+  </div>
+</div>
+<script>
+  const v = new URLSearchParams(location.search).get('v') || 'A';
+  document.getElementById('poster').classList.add(v);
+  document.getElementById('art').src = v === 'B' ? 'art-doorstep-16x9.png' : 'art-climb-16x9.png';
+</script>
+</body>
+</html>
